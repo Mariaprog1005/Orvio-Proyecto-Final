@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orvio | Contacto</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <link rel="stylesheet" href="../estilos/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!--navbar.-->
+    <nav class="navbar">
+      <a href="../index.html" class="nav-logo">Or<span>v</span>io</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="acercade.html">Nosotros</a></li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="openCart()" aria-label="Carrito">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" style="display: none">0</span>
+        </button>
+        <button
+          class="menu-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Inicio</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="acercade.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+
+    <!--pagina header.-->
+    <header class="page-header">
+      <h1>Contacto</h1>
+      <p>Estamos para ayudarte de lunes a viernes de 9 a 18hs</p>
+    </header>
+
+    <!-- contacto grid.-->
+    <section class="section">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div>
+            <h2 class="contact-info-title">Hablemos</h2>
+            <p class="contact-info-sub">
+              ¿Tenés dudas sobre un producto, un pedido o necesitás
+              asesoramiento? Escribinos y te respondemos a la brevedad.
+            </p>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <div class="contact-item-label">Dirección</div>
+              <div class="contact-item-val">
+                Belgrano 6424, José León Suárez<br />Pcia. de Buenos Aires
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div>
+              <div class="contact-item-label">WhatsApp</div>
+              <div class="contact-item-val">
+                <a
+                  href="https://wa.me/5491162506608"
+                  style="color: var(--accent)"
+                  >+54 11 6250-6608</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+              <div class="contact-item-label">Horario de atención</div>
+              <div class="contact-item-val">
+                Lunes a Viernes · 9:00 a 18:00 hs
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <i class="fa-solid fa-rotate-left"></i>
+            </div>
+            <div>
+              <div class="contact-item-label">Devoluciones</div>
+              <div class="contact-item-val">
+                <a href="politicas.html" style="color: var(--accent)"
+                  >Ver política de devoluciones →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3
+            style="
+              font-family: var(--font-display);
+              font-size: 1.2rem;
+              font-weight: 700;
+              margin-bottom: 1.5rem;
+            "
+          >
+            Envianos un mensaje
+          </h3>
+          <form id="contactForm" novalidate>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem"
+            >
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  class="form-control"
+                  placeholder="Juan García"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="juan@email.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="asunto">Asunto</label>
+              <input
+                type="text"
+                id="asunto"
+                class="form-control"
+                placeholder="Consulta sobre producto"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea
+                id="mensaje"
+                class="form-control"
+                placeholder="Contanos en qué podemos ayudarte..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer.-->
+    <footer>
+      <div class="footer-brand">
+        <div class="nav-logo">
+          Or<span style="color: var(--accent)">v</span>io
+        </div>
+        <p>Tu tienda de tecnología premium en Argentina.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="TikTok"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+          <a href="https://wa.me/5491162506608" aria-label="WhatsApp"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="acercade.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="tienda.html">Auriculares</a></li>
+          <li><a href="tienda.html">Notebooks</a></li>
+          <li><a href="tienda.html">Smartphones</a></li>
+          <li><a href="tienda.html">Monitores</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="politicas.html">Políticas de devolución</a></li>
+          <li><a href="contacto.html">Soporte</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>© 2025 Orvio — Rosana Scorzo. Todos los derechos reservados.</p>
+      <p>Belgrano 6424, José León Suárez, Pcia. de Buenos Aires</p>
+    </div>
+
+    <!-- carrito sidebar.-->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <span class="cart-header-title"
+          ><i
+            class="fa-solid fa-bag-shopping"
+            style="color: var(--accent); margin-right: 0.5rem"
+          ></i
+          >Mi carrito</span
+        >
+        <button class="cart-close-btn" onclick="closeCart()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-subtotal">
+          <span>Subtotal</span><span id="cartSubtotal">$0</span>
+        </div>
+        <div class="cart-total">
+          <span>Total</span
+          ><span class="cart-total-num" id="cartTotal">$0</span>
+        </div>
+        <input
+          type="text"
+          id="waNombre"
+          class="cart-name-input"
+          placeholder="Tu nombre (para el pedido)"
+        />
+        <button class="btn-wa" onclick="enviarWhatsApp()">
+          <i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp
+        </button>
+        <button class="btn-clear" onclick="clearCart()">Vaciar carrito</button>
+      </div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <a
+      href="https://wa.me/5491162506608"
+      class="wa-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="../script/script.js"></script>
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const nombre = document.getElementById("nombre").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const asunto = document.getElementById("asunto").value.trim();
+          const mensaje = document.getElementById("mensaje").value.trim();
+
+          if (!nombre || !email || !asunto || !mensaje) {
+            showToast("Por favor completá todos los campos");
+            return;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showToast("El email no es válido");
+            return;
+          }
+          showToast("¡Mensaje enviado! Te contactamos pronto.");
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

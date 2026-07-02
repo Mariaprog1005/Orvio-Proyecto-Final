@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orvio | Tienda</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <meta
+      name="description"
+      content="Explorá todo el catálogo de tecnología Orvio. Auriculares, notebooks, smartphones, monitores y más."
+    />
+    <link rel="stylesheet" href="../estilos/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- navbar-->
+    <nav class="navbar">
+      <a href="../index.html" class="nav-logo">Or<span>v</span>io</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="tienda.html" class="active">Tienda</a></li>
+        <li><a href="acercade.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="openCart()" aria-label="Carrito">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" style="display: none">0</span>
+        </button>
+        <button
+          class="menu-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- menu mobil-->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Inicio</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="acercade.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+
+    <!-- pagina header-->
+    <header class="page-header">
+      <h1>Catálogo completo</h1>
+      <p>Encontrá el dispositivo perfecto para tu estilo de vida</p>
+    </header>
+
+    <!-- filtros  -->
+    <div class="store-filters">
+      <button class="filter-btn active" data-cat="todos">Todos</button>
+      <button class="filter-btn" data-cat="Auriculares">Auriculares</button>
+      <button class="filter-btn" data-cat="Notebooks">Notebooks</button>
+      <button class="filter-btn" data-cat="Smartphones">Smartphones</button>
+      <button class="filter-btn" data-cat="Tablets">Tablets</button>
+      <button class="filter-btn" data-cat="Smartwatches">Smartwatches</button>
+      <button class="filter-btn" data-cat="Televisores">Televisores</button>
+      <button class="filter-btn" data-cat="Parlantes">Parlantes</button>
+      <button class="filter-btn" data-cat="Accesorios">Accesorios</button>
+      <button class="filter-btn" data-cat="Otros">Otros</button>
+    </div>
+
+    <!-- grilla 12 productos.-->
+    <section class="section" style="padding-top: 1.5rem">
+      <div class="cards-grid-store" id="storeGrid"></div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <div class="footer-brand">
+        <div class="nav-logo">
+          Or<span style="color: var(--accent)">v</span>io
+        </div>
+        <p>Tu tienda de tecnología premium en Argentina.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="TikTok"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+          <a href="https://wa.me/5491162506608" aria-label="WhatsApp"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="acercade.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="#">Auriculares</a></li>
+          <li><a href="#">Notebooks</a></li>
+          <li><a href="#">Smartphones</a></li>
+          <li><a href="#">Monitores</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="politicas.html">Políticas de devolución</a></li>
+          <li><a href="contacto.html">Soporte</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>© 2025 Orvio — Rosana Scorzo. Todos los derechos reservados.</p>
+      <p>Belgrano 6424, José León Suárez, Pcia. de Buenos Aires</p>
+    </div>
+
+    <!-- carrito sidebar. -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <span class="cart-header-title"
+          ><i
+            class="fa-solid fa-bag-shopping"
+            style="color: var(--accent); margin-right: 0.5rem"
+          ></i
+          >Mi carrito</span
+        >
+        <button class="cart-close-btn" onclick="closeCart()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-subtotal">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0</span>
+        </div>
+        <div class="cart-total">
+          <span>Total</span>
+          <span class="cart-total-num" id="cartTotal">$0</span>
+        </div>
+        <input
+          type="text"
+          id="waNombre"
+          class="cart-name-input"
+          placeholder="Tu nombre (para el pedido)"
+        />
+        <button class="btn-wa" onclick="enviarWhatsApp()">
+          <i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp
+        </button>
+        <button class="btn-clear" onclick="clearCart()">Vaciar carrito</button>
+      </div>
+    </aside>
+
+    <!--modal detalle.-->
+    <div class="modal-overlay" id="productModal">
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="modal-img">
+          <img id="modalImg" src="" alt="" />
+        </div>
+        <div class="modal-info">
+          <span class="modal-category" id="modalCategory"></span>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <div class="modal-price" id="modalPrice"></div>
+          <p class="modal-desc" id="modalDesc"></p>
+          <div class="modal-specs" id="modalSpecs"></div>
+          <div class="modal-actions">
+            <button class="modal-add-btn" id="modalAddBtn">
+              <i class="fa-solid fa-bag-shopping"></i> Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--toast.-->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!--whatsapp flotante.-->
+    <a
+      href="https://wa.me/5491162506608"
+      class="wa-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="../script/script.js"></script>
+  </body>
+</html>

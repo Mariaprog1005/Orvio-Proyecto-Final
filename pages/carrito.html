@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orvio | Carrito</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <link rel="stylesheet" href="../estilos/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      /* estilos especificos de la pagina de carrito.*/
+      .cart-page-layout {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 7rem 5% 4rem;
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 2.5rem;
+        align-items: flex-start;
+      }
+
+      .cart-page-title {
+        font-family: var(--font-display);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+      .cart-page-title span {
+        color: var(--accent);
+      }
+
+      /* items list. */
+      .cart-page-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .cart-page-item {
+        display: grid;
+        grid-template-columns: 90px 1fr auto;
+        gap: 1.2rem;
+        align-items: center;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.1rem;
+        transition: border-color var(--transition);
+      }
+      .cart-page-item:hover {
+        border-color: rgba(0, 229, 160, 0.2);
+      }
+
+      .cart-pi-img {
+        width: 90px;
+        height: 90px;
+        background: #0d0d18;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .cart-pi-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 6px;
+      }
+
+      .cart-pi-name {
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 0.3rem;
+      }
+      .cart-pi-cat {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+      }
+      .cart-pi-unit {
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .cart-pi-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.7rem;
+      }
+      .cart-pi-price {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .cart-pi-qty {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .qty-btn-lg {
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        color: var(--white);
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color var(--transition),
+          background var(--transition);
+      }
+      .qty-btn-lg:hover {
+        border-color: var(--accent);
+        background: rgba(0, 229, 160, 0.08);
+        color: var(--accent);
+      }
+      .qty-val-lg {
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 700;
+        min-width: 24px;
+        text-align: center;
+      }
+
+      .cart-pi-remove {
+        font-size: 0.8rem;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        transition: color var(--transition);
+      }
+      .cart-pi-remove:hover {
+        color: var(--danger);
+      }
+
+      /* empty state.*/
+      .cart-page-empty {
+        text-align: center;
+        padding: 5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+      .cart-page-empty i {
+        font-size: 4rem;
+        color: var(--border);
+      }
+      .cart-page-empty h2 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+      }
+      .cart-page-empty p {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      /* summary card*/
+      .cart-summary-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 1.8rem;
+        position: sticky;
+        top: 90px;
+      }
+      .cart-summary-title {
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1.4rem;
+      }
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .summary-row.total {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        font-weight: 700;
+        border-bottom: none;
+        padding-top: 1rem;
+      }
+      .summary-row.total span:last-child {
+        color: var(--accent);
+      }
+      .summary-label {
+        color: var(--muted);
+      }
+      .summary-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 0.5rem 0;
+      }
+
+      .cart-name-field {
+        margin: 1.2rem 0 0.8rem;
+      }
+      .cart-name-field label {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 0.4rem;
+      }
+
+      .btn-wa-lg {
+        width: 100%;
+        background: #25d366;
+        color: #fff;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 1rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        transition:
+          background var(--transition),
+          transform var(--transition);
+        margin-bottom: 0.8rem;
+      }
+      .btn-wa-lg:hover {
+        background: #1ebe5d;
+        transform: scale(1.015);
+      }
+
+      .btn-clear-lg {
+        width: 100%;
+        border: 1px solid rgba(255, 77, 109, 0.3);
+        color: var(--danger);
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        padding: 0.65rem;
+        border-radius: 10px;
+        transition: background var(--transition);
+        text-align: center;
+        background: none;
+      }
+      .btn-clear-lg:hover {
+        background: rgba(255, 77, 109, 0.1);
+      }
+
+      .cart-security {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.75rem;
+        color: var(--muted);
+        justify-content: center;
+        margin-top: 0.8rem;
+      }
+      .cart-security i {
+        color: var(--accent);
+      }
+
+      @media (max-width: 800px) {
+        .cart-page-layout {
+          grid-template-columns: 1fr;
+          padding-top: 5rem;
+        }
+        .cart-summary-card {
+          position: static;
+        }
+        .cart-page-item {
+          grid-template-columns: 70px 1fr;
+        }
+        .cart-pi-right {
+          grid-column: 1 / -1;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      @media (max-width: 480px) {
+        .cart-page-item {
+          grid-template-columns: 60px 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar.-->
+    <nav class="navbar">
+      <a href="../index.html" class="nav-logo">Or<span>v</span>io</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="acercade.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="openCart()" aria-label="Carrito">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" style="display: none">0</span>
+        </button>
+        <button
+          class="menu-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Inicio</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="acercade.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+
+    <!--cart pagina layout-->
+    <main class="cart-page-layout">
+      <!-- lista de productos. -->
+      <div>
+        <h1 class="cart-page-title">
+          Mi carrito <span id="pageCartCount"></span>
+        </h1>
+        <div id="cartPageItems"></div>
+      </div>
+
+      <!-- resumen. -->
+      <div class="cart-summary-card" id="cartSummaryCard">
+        <div class="cart-summary-title">Resumen del pedido</div>
+
+        <div class="summary-row">
+          <span class="summary-label">Subtotal</span>
+          <span id="pgSubtotal">$0</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Envío</span>
+          <span style="color: var(--accent)">A coordinar</span>
+        </div>
+        <hr class="summary-divider" />
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="pgTotal">$0</span>
+        </div>
+
+        <div class="cart-name-field">
+          <label for="pgNombre">Tu nombre</label>
+          <input
+            type="text"
+            id="pgNombre"
+            class="cart-name-input"
+            placeholder="Juan García"
+          />
+        </div>
+
+        <button class="btn-wa-lg" onclick="enviarPedidoWA()">
+          <i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp
+        </button>
+        <button class="btn-clear-lg" onclick="vaciarYRenderizar()">
+          Vaciar carrito
+        </button>
+
+        <div class="cart-security">
+          <i class="fa-solid fa-lock"></i>
+          <span>Pago seguro — Transferencia / Alias / CBU</span>
+        </div>
+      </div>
+    </main>
+
+    <!--footer.-->
+    <footer>
+      <div class="footer-brand">
+        <div class="nav-logo">
+          Or<span style="color: var(--accent)">v</span>io
+        </div>
+        <p>Tu tienda de tecnología premium en Argentina.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="TikTok"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+          <a href="https://wa.me/5491162506608" aria-label="WhatsApp"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="acercade.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="politicas.html">Políticas de devolución</a></li>
+          <li><a href="contacto.html">Soporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Pago</h4>
+        <ul>
+          <li><a href="#">Transferencia bancaria</a></li>
+          <li><a href="#">Alias / CBU</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>© 2025 Orvio — Rosana Scorzo. Todos los derechos reservados.</p>
+      <p>Belgrano 6424, José León Suárez, Pcia. de Buenos Aires</p>
+    </div>
+
+    <!--carrito sidebar (tambien accesible desde aca .)-->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <span class="cart-header-title"
+          ><i
+            class="fa-solid fa-bag-shopping"
+            style="color: var(--accent); margin-right: 0.5rem"
+          ></i
+          >Mi carrito</span
+        >
+        <button class="cart-close-btn" onclick="closeCart()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-subtotal">
+          <span>Subtotal</span><span id="cartSubtotal">$0</span>
+        </div>
+        <div class="cart-total">
+          <span>Total</span
+          ><span class="cart-total-num" id="cartTotal">$0</span>
+        </div>
+        <input
+          type="text"
+          id="waNombre"
+          class="cart-name-input"
+          placeholder="Tu nombre"
+        />
+        <button class="btn-wa" onclick="enviarWhatsApp()">
+          <i class="fa-brands fa-whatsapp"></i> Enviar por WhatsApp
+        </button>
+        <button
+          class="btn-clear"
+          onclick="
+            clearCart();
+            renderPageCart();
+          "
+        >
+          Vaciar carrito
+        </button>
+      </div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <a
+      href="https://wa.me/5491162506608"
+      class="wa-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="../script/script.js"></script>
+    <script>
+      function renderPageCart() {
+        const cart = getCart();
+        const itemsEl = document.getElementById("cartPageItems");
+        const countEl = document.getElementById("pageCartCount");
+        const summaryEl = document.getElementById("cartSummaryCard");
+
+        const totalItems = cart.reduce((s, i) => s + i.cantidad, 0);
+        countEl.textContent = totalItems > 0 ? `(${totalItems})` : "";
+
+        if (cart.length === 0) {
+          itemsEl.innerHTML = `
+        <div class="cart-page-empty">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <h2>Tu carrito está vacío</h2>
+          <p>Agregá productos desde la tienda para hacer tu pedido.</p>
+          <a href="tienda.html" class="btn-primary" style="margin-top:.5rem">Ir a la tienda</a>
+        </div>`;
+          summaryEl.style.display = "none";
+          return;
+        }
+
+        summaryEl.style.display = "";
+
+        itemsEl.innerHTML =
+          `<div class="cart-page-items">` +
+          cart
+            .map(
+              (item) => `
+        <div class="cart-page-item" data-id="${item.id}">
+          <div class="cart-pi-img">
+            <img src="${item.imagen || item.image}" alt="${item.nombre || item.title}" />
+          </div>
+          <div>
+            <div class="cart-pi-cat">${item.categoria || ""}</div>
+            <div class="cart-pi-name">${item.nombre || item.title}</div>
+            <div class="cart-pi-unit">Precio unitario: ${formatPeso(item.precio || item.price)}</div>
+          </div>
+          <div class="cart-pi-right">
+            <div class="cart-pi-price">${formatPeso((item.precio || item.price) * item.cantidad)}</div>
+            <div class="cart-pi-qty">
+              <button class="qty-btn-lg" onclick="changeQtyPage(${item.id},-1)">−</button>
+              <span class="qty-val-lg">${item.cantidad}</span>
+              <button class="qty-btn-lg" onclick="changeQtyPage(${item.id},1)">+</button>
+            </div>
+            <button class="cart-pi-remove" onclick="removeFromCartPage(${item.id})">
+              <i class="fa-solid fa-trash-can"></i> Eliminar
+            </button>
+          </div>
+        </div>`,
+            )
+            .join("") +
+          `</div>`;
+
+        const subtotal = cart.reduce(
+          (s, i) => s + (i.precio || i.price) * i.cantidad,
+          0,
+        );
+        document.getElementById("pgSubtotal").textContent =
+          formatPeso(subtotal);
+        document.getElementById("pgTotal").textContent = formatPeso(subtotal);
+      }
+
+      function changeQtyPage(id, delta) {
+        changeQty(id, delta);
+        renderPageCart();
+      }
+      function removeFromCartPage(id) {
+        removeFromCart(id);
+        renderPageCart();
+      }
+      function vaciarYRenderizar() {
+        clearCart();
+        renderPageCart();
+      }
+      function enviarPedidoWA() {
+        const cart = getCart();
+        if (cart.length === 0) {
+          showToast("El carrito está vacío");
+          return;
+        }
+        const nombre =
+          document.getElementById("pgNombre").value.trim() || "Cliente";
+        const fecha = new Date().toLocaleString("es-AR", {
+          dateStyle: "short",
+          timeStyle: "short",
+        });
+        const items = cart
+          .map(
+            (i) =>
+              `- ${i.cantidad}x ${i.nombre || i.title} ${formatPeso((i.precio || i.price) * i.cantidad)}`,
+          )
+          .join("\n");
+        const total = cart.reduce(
+          (s, i) => s + (i.precio || i.price) * i.cantidad,
+          0,
+        );
+
+        const msg = `*ORVIO - Pedido Online*
+---------------------------
+*Cliente:* ${nombre}
+*Fecha:* ${fecha}
+
+*Detalle del pedido:*
+${items}
+
+---------------------------
+*TOTAL: ${formatPeso(total)}*
+
+Por favor, compartame el alias o CBU para realizar el pago. Muchas gracias!`;
+
+        window.open(
+          `https://wa.me/5491162506608?text=${encodeURIComponent(msg)}`,
+          "_blank",
+        );
+      }
+
+      // inicializar.
+      renderPageCart();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orvio | Home</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <meta
+      name="description"
+      content="Orvio: tu tienda de tecnología premium en Argentina. Auriculares, notebooks, smartphones y más."
+    />
+    <link rel="stylesheet" href="estilos/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- navar -->
+    <nav class="navbar">
+      <a href="index.html" class="nav-logo">Or<span>v</span>io</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="pages/tienda.html">Tienda</a></li>
+        <li><a href="pages/acercade.html">Nosotros</a></li>
+        <li><a href="pages/contacto.html">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="openCart()" aria-label="Carrito">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" style="display: none">0</span>
+        </button>
+        <button
+          class="menu-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- movil menu-->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Inicio</a>
+      <a href="pages/tienda.html">Tienda</a>
+      <a href="pages/acercade.html">Nosotros</a>
+      <a href="pages/contacto.html">Contacto</a>
+    </div>
+
+    <!-- hero -->
+    <section class="hero">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="img/portada.jpg"
+      >
+        <source src="img/video2.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="hero-eyebrow">Nueva colección 2026</span>
+        <h1 class="hero-title">Tecnología que<br /><em>te eleva</em></h1>
+        <p class="hero-sub">
+          Desde auriculares premium hasta notebooks de última generación. Todo
+          lo que necesitás, en un solo lugar.
+        </p>
+        <div class="hero-actions">
+          <a href="pages/tienda.html" class="btn-primary">Ver tienda</a>
+          <a href="pages/acercade.html" class="btn-outline">Conocenos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- features strip -->
+    <div class="features-strip">
+      <div class="feature-item">
+        <span class="feature-icon"><i class="fa-solid fa-truck-fast"></i></span>
+        <div class="feature-text">
+          <strong>Envío a todo el país</strong>
+          <span>Correo Argentino y OCA</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon"
+          ><i class="fa-solid fa-shield-halved"></i
+        ></span>
+        <div class="feature-text">
+          <strong>Garantía oficial</strong>
+          <span>12 meses en todos los productos</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon"
+          ><i class="fa-solid fa-rotate-left"></i
+        ></span>
+        <div class="feature-text">
+          <strong>30 días de devolución</strong>
+          <span>Sin preguntas, sin vueltas</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon"><i class="fa-solid fa-lock"></i></span>
+        <div class="feature-text">
+          <strong>Pago seguro</strong>
+          <span>Transferencia, alias y CBU</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- productos destacados -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-eyebrow">Lo más buscado</span>
+        <h2 class="section-title">Tu ecosistema inteligente</h2>
+        <p class="section-sub">
+          Seleccionamos los mejores productos para que armes tu setup ideal.
+        </p>
+      </div>
+
+      <div class="cards-grid-home" id="homeGrid"></div>
+
+      <div style="text-align: center; margin-top: 3rem">
+        <a href="pages/tienda.html" class="btn-primary"
+          >Ver catálogo completo</a
+        >
+      </div>
+    </section>
+
+    <!-- newsltter -->
+    <section class="section">
+      <div class="newsletter">
+        <h3 class="newsletter-title">Ofertas antes que nadie</h3>
+        <p class="newsletter-sub">
+          Suscribite y recibí descuentos exclusivos directamente en tu correo.
+        </p>
+        <form class="newsletter-form" novalidate>
+          <input
+            type="email"
+            class="newsletter-input"
+            placeholder="tu@email.com"
+            required
+          />
+          <button type="submit" class="newsletter-btn">Suscribirme</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <div class="footer-brand">
+        <div class="nav-logo">
+          Or<span style="color: var(--accent)">v</span>io
+        </div>
+        <p>
+          Tu tienda de tecnología premium en Argentina. Calidad garantizada y
+          atención personalizada en cada compra.
+        </p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="TikTok"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+          <a href="https://wa.me/5491162506608" aria-label="WhatsApp"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="pages/tienda.html">Tienda</a></li>
+          <li><a href="pages/acercade.html">Nosotros</a></li>
+          <li><a href="pages/contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="pages/tienda.html">Auriculares</a></li>
+          <li><a href="pages/tienda.html">Notebooks</a></li>
+          <li><a href="pages/tienda.html">Smartphones</a></li>
+          <li><a href="pages/tienda.html">Monitores</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="pages/politicas.html">Políticas de devolución</a></li>
+          <li><a href="pages/contacto.html">Soporte</a></li>
+          <li><a href="pages/carrito.html">Mi carrito</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>© 2025 Orvio — Rosana Scorzo. Todos los derechos reservados.</p>
+      <p>Belgrano 6424, José León Suárez, Pcia. de Buenos Aires</p>
+    </div>
+
+    <!-- carrito sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <span class="cart-header-title"
+          ><i
+            class="fa-solid fa-bag-shopping"
+            style="color: var(--accent); margin-right: 0.5rem"
+          ></i
+          >Mi carrito</span
+        >
+        <button class="cart-close-btn" onclick="closeCart()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-subtotal">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0</span>
+        </div>
+        <div class="cart-total">
+          <span>Total</span>
+          <span class="cart-total-num" id="cartTotal">$0</span>
+        </div>
+        <input
+          type="text"
+          id="waNombre"
+          class="cart-name-input"
+          placeholder="Tu nombre (para el pedido)"
+        />
+        <button class="btn-wa" onclick="enviarWhatsApp()">
+          <i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp
+        </button>
+        <button class="btn-clear" onclick="clearCart()">Vaciar carrito</button>
+      </div>
+    </aside>
+
+    <!-- modal detalle -->
+    <div class="modal-overlay" id="productModal">
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="modal-img">
+          <img id="modalImg" src="" alt="" />
+        </div>
+        <div class="modal-info">
+          <span class="modal-category" id="modalCategory"></span>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <div class="modal-price" id="modalPrice"></div>
+          <p class="modal-desc" id="modalDesc"></p>
+          <div class="modal-specs" id="modalSpecs"></div>
+          <div class="modal-actions">
+            <button class="modal-add-btn" id="modalAddBtn">
+              <i class="fa-solid fa-bag-shopping"></i> Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- toast -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- whatsapp flotante -->
+    <a
+      href="https://wa.me/5491162506608"
+      class="wa-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="script/script.js"></script>
+  </body>
+</html>

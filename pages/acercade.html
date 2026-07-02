@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orvio | Nosotros</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <link rel="stylesheet" href="../estilos/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!--navbar.-->
+    <nav class="navbar">
+      <a href="../index.html" class="nav-logo">Or<span>v</span>io</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="acercade.html" class="active">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="cart-btn" onclick="openCart()" aria-label="Carrito">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" style="display: none">0</span>
+        </button>
+        <button
+          class="menu-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Inicio</a>
+      <a href="tienda.html">Tienda</a>
+      <a href="acercade.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+
+    <!-- about hero.-->
+    <section class="about-hero">
+      <div class="about-text">
+        <span class="section-eyebrow">Nuestra historia</span>
+        <h1 class="about-title">Tecnología con <em>propósito</em></h1>
+        <p class="about-desc">
+          Orvio nació de una idea simple: que acceder a tecnología de calidad en
+          Argentina no debería ser complicado ni caro. Somos un emprendimiento
+          familiar ubicado en José León Suárez, Buenos Aires, con más de 5 años
+          conectando personas con los mejores dispositivos del mercado.
+        </p>
+        <p class="about-desc" style="margin-top: 1rem">
+          Seleccionamos cada producto cuidadosamente, priorizando rendimiento
+          real, durabilidad y una relación precio-calidad que valga la pena. No
+          vendemos cualquier cosa: vendemos lo que usaríamos nosotros mismos.
+        </p>
+      </div>
+      <div class="about-img-wrap">
+        <img src="../img/nosotros.jpg" alt="Tecnología Orvio" />
+      </div>
+    </section>
+
+    <!-- stats.-->
+    <section
+      class="section-sm"
+      style="
+        text-align: center;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      "
+    >
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem;
+          justify-content: center;
+          max-width: 800px;
+          margin: 0 auto;
+        "
+      >
+        <div>
+          <div
+            style="
+              font-family: var(--font-display);
+              font-size: 2.8rem;
+              font-weight: 700;
+              color: var(--accent);
+            "
+          >
+            +5K
+          </div>
+          <div style="font-size: 0.85rem; color: var(--muted)">
+            Clientes satisfechos
+          </div>
+        </div>
+        <div>
+          <div
+            style="
+              font-family: var(--font-display);
+              font-size: 2.8rem;
+              font-weight: 700;
+              color: var(--accent);
+            "
+          >
+            6
+          </div>
+          <div style="font-size: 0.85rem; color: var(--muted)">
+            Meses de garantía
+          </div>
+        </div>
+        <div>
+          <div
+            style="
+              font-family: var(--font-display);
+              font-size: 2.8rem;
+              font-weight: 700;
+              color: var(--accent);
+            "
+          >
+            +100
+          </div>
+          <div style="font-size: 0.85rem; color: var(--muted)">
+            Productos disponibles
+          </div>
+        </div>
+        <div>
+          <div
+            style="
+              font-family: var(--font-display);
+              font-size: 2.8rem;
+              font-weight: 700;
+              color: var(--accent);
+            "
+          >
+            4.9
+          </div>
+          <div style="font-size: 0.85rem; color: var(--muted)">
+            Puntuación promedio
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--valores.-->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-eyebrow">Lo que nos mueve</span>
+        <h2 class="section-title">Nuestros valores</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="value-title">Calidad sin compromiso</div>
+          <p class="value-desc">
+            Solo trabajamos con marcas y productos que superan nuestros
+            estándares. Si no lo compraríamos nosotros, no lo vendemos.
+          </p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div class="value-title">Atención real</div>
+          <p class="value-desc">
+            Respondemos rápido, explicamos claro y acompañamos cada compra desde
+            el clic hasta que el producto llega a tus manos.
+          </p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="value-title">Siempre actualizados</div>
+          <p class="value-desc">
+            El mundo tech evoluciona todos los días. Renovamos nuestro catálogo
+            constantemente para que siempre tengas acceso a lo último.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- cta.-->
+    <section class="section" style="padding-top: 0">
+      <div
+        class="newsletter"
+        style="
+          background: rgba(0, 229, 160, 0.06);
+          border-color: rgba(0, 229, 160, 0.2);
+        "
+      >
+        <h3 class="newsletter-title">¿Listo Para Armar Tu Pedido ?</h3>
+        <p class="newsletter-sub">
+          Explorá nuestro catálogo y encontrá la tecnología que buscabas.
+        </p>
+        <a
+          href="tienda.html"
+          class="btn-primary"
+          style="display: inline-block; margin-top: 0.5rem"
+          >Ver tienda</a
+        >
+      </div>
+    </section>
+
+    <!--footer. -->
+    <footer>
+      <div class="footer-brand">
+        <div class="nav-logo">
+          Or<span style="color: var(--accent)">v</span>io
+        </div>
+        <p>Tu tienda de tecnología premium en Argentina.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" aria-label="Facebook"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" aria-label="TikTok"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+          <a href="https://wa.me/5491162506608" aria-label="WhatsApp"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="acercade.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="tienda.html">Auriculares</a></li>
+          <li><a href="tienda.html">Notebooks</a></li>
+          <li><a href="tienda.html">Smartphones</a></li>
+          <li><a href="tienda.html">Monitores</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="politicas.html">Políticas de devolución</a></li>
+          <li><a href="contacto.html">Soporte</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>© 2025 Orvio — Rosana Scorzo. Todos los derechos reservados.</p>
+      <p>Belgrano 6424, José León Suárez, Pcia. de Buenos Aires</p>
+    </div>
+
+    <!-- carrito sidebar. -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <span class="cart-header-title"
+          ><i
+            class="fa-solid fa-bag-shopping"
+            style="color: var(--accent); margin-right: 0.5rem"
+          ></i
+          >Mi carrito</span
+        >
+        <button class="cart-close-btn" onclick="closeCart()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-subtotal">
+          <span>Subtotal</span><span id="cartSubtotal">$0</span>
+        </div>
+        <div class="cart-total">
+          <span>Total</span
+          ><span class="cart-total-num" id="cartTotal">$0</span>
+        </div>
+        <input
+          type="text"
+          id="waNombre"
+          class="cart-name-input"
+          placeholder="Tu nombre (para el pedido)"
+        />
+        <button class="btn-wa" onclick="enviarWhatsApp()">
+          <i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp
+        </button>
+        <button class="btn-clear" onclick="clearCart()">Vaciar carrito</button>
+      </div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <a
+      href="https://wa.me/5491162506608"
+      class="wa-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="../script/script.js"></script>
+  </body>
+</html>
