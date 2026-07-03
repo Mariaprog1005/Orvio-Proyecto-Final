@@ -659,9 +659,24 @@ function enviarWhatsApp() {
 
 function handleNewsletter(e) {
   e.preventDefault();
-  showToast("¡Te suscribiste exitosamente!");
+
   var input = e.target.querySelector("input[type=email]");
-  if (input) input.value = "";
+  var email = input ? input.value.trim() : "";
+
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (email === "") {
+    showToast("Ingresá tu email para suscribirte");
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    showToast("Ingresá un email válido");
+    return;
+  }
+
+  showToast("¡Te suscribiste exitosamente!");
+  input.value = "";
 }
 
 // filtros de tienda

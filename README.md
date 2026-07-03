@@ -1,35 +1,44 @@
 # Orvio
 
-Proyecto final del curso de Desarrollo Web (Talento Tech ).
+Proyecto final del curso de Desarrollo Web Front-end de Talento Tech .
 
-## ¿Qué es?
+## Cómo arrancó todo
 
-Orvio es una tienda online de tecnología. Es un sitio multipágina donde se pueden ver productos (auriculares, celulares, notebooks, smart TVs, relojes, accesorios), agregarlos a un carrito de compras y hacer el pedido por WhatsApp.
+Al principio hice la página que habíamos armado en clase, siguiendo la consigna del curso tal cual. Pero después se me ocurrió algo mejor: una amiga mía tiene una tienda de tecnología real en José León Suárez, y pensé que en vez de entregar un proyecto genérico podía armarle algo de verdad, que ella pudiera llegar a usar. Así que dejé la página de la clase de lado y arranqué de cero con Orvio.
 
-## Idea principal
+## Qué es Orvio
 
-La idea fue armar una tienda de tecnología completa y funcional, con una experiencia de compra simple: el usuario navega el catálogo, ve el detalle de cada producto en un modal, arma su carrito, lo edita las veces que quiera, y al final puede enviar el pedido directo por WhatsApp con todos los productos y el total ya armado en el mensaje.
+Es una tienda online de tecnología: el cliente entra, mira el catálogo (auriculares, celulares, notebooks, smart TVs, relojes, accesorios), agrega lo que quiere a un carrito, y cuando termina, le manda el pedido directo al WhatsApp de la tienda con todo ya armado: productos, cantidades y total.
 
-Al principio arranqué consumiendo productos desde una API externa (DummyJSON) con fetch, pero después decidí pasar todo a datos locales hardcodeados en el JS para tener control total sobre los productos, precios e imágenes de mi propia tienda, sin depender de un servicio externo que podía cambiar o caerse.
+## Cómo lo fui armando
 
-## Qué hice
+Arranqué por la estructura: hice el home, la tienda, el carrito, la sección "nosotros", contacto y políticas, todas conectadas entre sí con la misma navbar y footer.
 
-- Armé la estructura completa del sitio: home, tienda, carrito, nosotros, contacto y políticas, todas conectadas entre sí.
-- Hice el carrito de compras con persistencia en localStorage, para que no se pierda si el usuario cierra o recarga la página.
-- Implementé el envío del pedido por WhatsApp: arma automáticamente un mensaje con el nombre del cliente, la fecha, el listado de productos con cantidades y precios, y el total.
-- Agregué modales de detalle de producto (estilo Mercado Libre) con imagen, precio, descripción y botón para agregar al carrito.
-- Hice el formulario de contacto con validación en JavaScript (campos requeridos y formato de email).
-- Armé el menú responsive con hamburguesa para mobile.
-- Agregué notificaciones tipo toast para reemplazar los alerts nativos.
-- Saqué la dependencia de la API externa y pasé todos los productos a un array local, para no depender de servicios de terceros.
-- Corregí varios bugs en el camino: rutas relativas rotas al llamar el script.js y las imágenes desde las páginas dentro de /pages/, un HTML duplicado que había quedado pegado dentro de tienda.html, ids repetidos, y links del footer que no andaban.
+Hice el carrito de compras guardando todo en localStorage, para que si el cliente cierra la página o la recarga, no pierda lo que ya había agregado.
+
+Apliqué el envío del pedido por WhatsApp, así que armé una función que arma el mensaje solo: pone el nombre del cliente, la fecha, cada producto con su cantidad y precio, y el total al final, listo para mandar.
+
+Agregué los modales de detalle de producto (tipo Mercado Libre), con imagen grande, precio, descripción y el botón para sumarlo al carrito directo desde ahí.
+
+Hice el formulario de contacto con validación en JavaScript, para que no se pueda mandar vacío ni con un email mal escrito.
+
+Armé el menú hamburguesa para que se vea bien en el celular, porque calculo que la mayoría de los clientes de mi amiga van a entrar desde el teléfono.
+
+Metí notificaciones tipo toast en vez de los alerts feos de JavaScript, para que se sienta más prolijo.
+
+Al principio traía los productos desde una API externa (DummyJSON) usando fetch, pero después lo cambié y pasé todo a un array armado por mí en el JS. Lo hice así para tener control total de los productos, precios e imágenes de la tienda real de mi amiga, sin depender de un servicio externo que en cualquier momento se puede caer o cambiar.
+
+En el camino tuve que ir corrigiendo varias cosas: rutas rotas del script.js y de las imágenes cuando las páginas estaban adentro de /pages/, un HTML entero que se me había duplicado sin querer dentro de tienda.html, ids repetidos, y links del footer que no llevaban a ningún lado.
+
+## Ayuda que usé
+
+No lo hice sola de principio a fin: usé Gemini y Claude como apoyo para destrabarme en varias partes (sobre todo JavaScript), y también miré varios videos de YouTube para entender mejor algunas cosas antes de meter mano en el código. Todo lo que está en el proyecto lo terminé escribiendo, entendiendo y ajustando yo, pero no voy a decir que lo hice sin ayuda porque no sería justo.
 
 ## Tecnologías utilizadas
 
 - HTML5 (semántico)
 - CSS3 (Flexbox, Grid, Media Queries)
-- JavaScript ( sin frameworks)
-  (utilice como apoyo Gemini y Claude IA)
+- JavaScript (sin frameworks)
 
 ## Librerías externas
 
